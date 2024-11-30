@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://fhb62trvuu3g"]
+
+[ext_resource type="Texture2D" uid="uid://n3v6yjucllls" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/opossum/opossum-1.png" id="1_ip61k"]
+[ext_resource type="Texture2D" uid="uid://vwbkx8y2equo" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/opossum/opossum-2.png" id="2_7rbvm"]
+[ext_resource type="Texture2D" uid="uid://coijktwln420w" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/opossum/opossum-3.png" id="3_h1hgb"]
+[ext_resource type="Texture2D" uid="uid://cbj1a5gfqx4in" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/opossum/opossum-4.png" id="4_j62se"]
+[ext_resource type="Texture2D" uid="uid://bup60ajllixia" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/opossum/opossum-5.png" id="5_ul0jr"]
+[ext_resource type="Texture2D" uid="uid://1h4mgjcvs33e" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/opossum/opossum-6.png" id="6_m6gdy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_brli1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_frmof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ip61k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7rbvm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h1hgb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j62se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ul0jr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m6gdy")
+}],
+"loop": true,
+"name": &"Oppossum",
+"speed": 5.0
+}]
+
+[node name="Octo" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_brli1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_frmof")
+animation = &"Oppossum"

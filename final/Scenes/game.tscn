@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://v7nminy1v338"]
+
+[ext_resource type="Script" path="res://Scenes/game.gd" id="1_140ef"]
+[ext_resource type="Texture2D" uid="uid://bcfblqpyc022e" path="res://assets/fondos/game.png" id="1_y5vh1"]
+[ext_resource type="PackedScene" uid="uid://bo3e8q3yqvof" path="res://Entitys/enemy_1.tscn" id="2_2g6va"]
+[ext_resource type="PackedScene" uid="uid://co8jwxjxuyd8w" path="res://Entitys/player.tscn" id="2_urome"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dy2pe"]
+size = Vector2(1170, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2eimp"]
+size = Vector2(27, 682.5)
+
+[sub_resource type="FontFile" id="FontFile_bwfay"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_b2hm1"]
+font = SubResource("FontFile_bwfay")
+font_size = 50
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_140ef")
+enemy_1 = ExtResource("2_2g6va")
+
+[node name="Fondo" type="Sprite2D" parent="."]
+position = Vector2(575, 326)
+scale = Vector2(1.60278, 2.0375)
+texture = ExtResource("1_y5vh1")
+
+[node name="player" parent="." instance=ExtResource("2_urome")]
+unique_name_in_owner = true
+position = Vector2(577, 318)
+
+[node name="colission" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colission"]
+position = Vector2(578, -14)
+shape = SubResource("RectangleShape2D_dy2pe")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colission"]
+position = Vector2(576, 661)
+shape = SubResource("RectangleShape2D_dy2pe")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="colission"]
+position = Vector2(-12.5, 323.75)
+shape = SubResource("RectangleShape2D_2eimp")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="colission"]
+position = Vector2(1164, 324)
+shape = SubResource("RectangleShape2D_2eimp")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="lbLives" type="Label" parent="HUD"]
+unique_name_in_owner = true
+offset_left = 30.0
+offset_top = 11.0
+offset_right = 94.0
+offset_bottom = 34.0
+text = "Vidas : 3"
+
+[node name="lbGameOver" type="Label" parent="HUD"]
+unique_name_in_owner = true
+visible = false
+offset_left = 291.0
+offset_top = 245.0
+offset_right = 913.0
+offset_bottom = 382.0
+text = "Game Over!
+Te quedaste sin vidas... Gaaa"
+label_settings = SubResource("LabelSettings_b2hm1")
+
+[node name="EnemyTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

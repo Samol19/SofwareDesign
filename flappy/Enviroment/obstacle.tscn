@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq3xcaumqcs25"]
+
+[ext_resource type="Script" path="res://Scripts/obstacle.gd" id="1_rnogm"]
+[ext_resource type="PackedScene" uid="uid://cclr7yaqk8hu3" path="res://Enviroment/pipe.tscn" id="2_70av8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsf7l"]
+size = Vector2(14, 197)
+
+[node name="Obstacle" type="Node2D"]
+position = Vector2(-4, -75)
+script = ExtResource("1_rnogm")
+
+[node name="Pipe" parent="." instance=ExtResource("2_70av8")]
+position = Vector2(0, 596)
+
+[node name="Pipe2" parent="." instance=ExtResource("2_70av8")]
+position = Vector2(80, 410)
+rotation = -3.14159
+
+[node name="ScoreEntrance" type="Area2D" parent="."]
+position = Vector2(45, 449)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreEntrance"]
+position = Vector2(-19, 52)
+shape = SubResource("RectangleShape2D_nsf7l")
+
+[connection signal="body_entered" from="Pipe" to="." method="_on_pipe_body_entered"]
+[connection signal="body_entered" from="Pipe2" to="." method="_on_pipe_2_body_entered"]
+[connection signal="body_exited" from="ScoreEntrance" to="." method="_on_score_entrance_body_exited"]

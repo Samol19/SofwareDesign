@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwkxp1gafpnq1"]
+
+[ext_resource type="PackedScene" uid="uid://dccoahgp447hl" path="res://Enviroment/hud.tscn" id="1_h5cr7"]
+[ext_resource type="Script" path="res://Scripts/world.gd" id="1_hhyen"]
+[ext_resource type="Texture2D" uid="uid://bo8mdvpcec4l6" path="res://assets/textures/background.png" id="1_tngj2"]
+[ext_resource type="PackedScene" uid="uid://w2htfx8mf7ky" path="res://Entitys/player.tscn" id="2_rg1pe"]
+[ext_resource type="PackedScene" uid="uid://23flknjvqjpw" path="res://Enviroment/ground.tscn" id="3_3c1c6"]
+[ext_resource type="PackedScene" uid="uid://uviemxalfl0b" path="res://Enviroment/obstacle_spawner.tscn" id="4_vbqqs"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_hhyen")
+
+[node name="HUD" parent="." instance=ExtResource("1_h5cr7")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(255.5, 397)
+scale = Vector2(1.06875, 0.922717)
+texture = ExtResource("1_tngj2")
+
+[node name="Player" parent="." instance=ExtResource("2_rg1pe")]
+position = Vector2(162, 277)
+
+[node name="Ground" parent="." instance=ExtResource("3_3c1c6")]
+position = Vector2(226, 751)
+
+[node name="ObstacleSpawner" parent="." instance=ExtResource("4_vbqqs")]
+position = Vector2(522, -1)

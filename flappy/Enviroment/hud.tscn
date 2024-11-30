@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dccoahgp447hl"]
+
+[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_235wa"]
+[ext_resource type="FontFile" uid="uid://6tpoamf8nydi" path="res://assets/fonts/flappyfont.TTF" id="1_lg7hs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o8j7e"]
+font = ExtResource("1_lg7hs")
+font_size = 81
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_235wa")
+
+[node name="score" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 15.0
+offset_bottom = 97.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_o8j7e")
+horizontal_alignment = 1

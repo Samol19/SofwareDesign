@@ -1,0 +1,97 @@
+[gd_scene load_steps=16 format=3 uid="uid://bqcn6j7embcun"]
+
+[ext_resource type="Texture2D" uid="uid://baw2o2gb0il4j" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/frog/idle/frog-idle-1.png" id="1_ogx7l"]
+[ext_resource type="Script" path="res://Enemy/frog.gd" id="1_yiy3u"]
+[ext_resource type="Texture2D" uid="uid://chop2v67s7qiy" path="res://Sunny Land Collection Files/Assets/Packs/Woods Pack/SPRITES/misc/enemy-death/enemy-death-1.png" id="2_cyq2v"]
+[ext_resource type="Texture2D" uid="uid://fw83uivvr1yj" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/frog/idle/frog-idle-2.png" id="2_pkwf3"]
+[ext_resource type="Texture2D" uid="uid://s51bx06dki5h" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/frog/idle/frog-idle-3.png" id="3_xes3o"]
+[ext_resource type="Texture2D" uid="uid://f3quwga2t6vq" path="res://Sunny Land Collection Files/Assets/Packs/Woods Pack/SPRITES/misc/enemy-death/enemy-death-2.png" id="3_xxwpk"]
+[ext_resource type="Texture2D" uid="uid://bojlo7b6edjod" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/frog/idle/frog-idle-4.png" id="4_qej45"]
+[ext_resource type="Texture2D" uid="uid://8f0jvira35i8" path="res://Sunny Land Collection Files/Assets/Packs/Woods Pack/SPRITES/misc/enemy-death/enemy-death-3.png" id="4_sloc6"]
+[ext_resource type="Texture2D" uid="uid://d1kdjvw4h1s13" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/frog/jump/frog-jump-1.png" id="5_dlee0"]
+[ext_resource type="Texture2D" uid="uid://bsmhieoct5ao8" path="res://Sunny Land Collection Files/Assets/Packs/Woods Pack/SPRITES/misc/enemy-death/enemy-death-4.png" id="5_kaf21"]
+[ext_resource type="Texture2D" uid="uid://dd7wcgaiasa6j" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/frog/jump/frog-jump-2.png" id="6_dwpke"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mihw"]
+size = Vector2(18, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0hfd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cyq2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xxwpk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sloc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kaf21")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ogx7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pkwf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xes3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qej45")
+}],
+"loop": true,
+"name": &"Iddle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dlee0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dwpke")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_68uqh"]
+radius = 148.003
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v6c8"]
+size = Vector2(14, 19)
+
+[node name="Frog" type="CharacterBody2D"]
+script = ExtResource("1_yiy3u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 3)
+shape = SubResource("RectangleShape2D_4mihw")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p0hfd")
+animation = &"Death"
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_68uqh")
+
+[node name="PlayerDeath" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDeath"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_3v6c8")
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="PlayerDeath" to="." method="_on_player_death_body_entered"]

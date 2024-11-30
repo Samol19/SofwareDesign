@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1rmx3ih4l6eh"]
+
+[ext_resource type="Texture2D" uid="uid://c7jgr1185fpme" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/eagle/eagle-attack-1.png" id="1_dwnya"]
+[ext_resource type="Texture2D" uid="uid://do3itbhfpf8qt" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/eagle/eagle-attack-2.png" id="2_dhq7p"]
+[ext_resource type="Texture2D" uid="uid://dtrklixx8g83f" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/eagle/eagle-attack-3.png" id="3_rcl1b"]
+[ext_resource type="Texture2D" uid="uid://isuo884246ep" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/eagle/eagle-attack-4.png" id="4_px347"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aa6n7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bts8g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dwnya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dhq7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rcl1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_px347")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}]
+
+[node name="Eagle" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_aa6n7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bts8g")
+animation = &"Attack"

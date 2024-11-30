@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkyevp85350kq"]
+
+[ext_resource type="Texture2D" uid="uid://b5tqk6ql0swde" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/frog/idle/frog-idle-1.png" id="1_1uxa4"]
+[ext_resource type="Texture2D" uid="uid://cl0do1725ryuv" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/frog/idle/frog-idle-2.png" id="2_6ugrf"]
+[ext_resource type="Texture2D" uid="uid://mm53dexrftnr" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/frog/idle/frog-idle-3.png" id="3_pq7nm"]
+[ext_resource type="Texture2D" uid="uid://c7j7y3bgv25a0" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/frog/idle/frog-idle-4.png" id="4_iu73a"]
+[ext_resource type="Texture2D" uid="uid://bhohtci2xjcnf" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/frog/jump/frog-jump-1.png" id="5_cu2v7"]
+[ext_resource type="Texture2D" uid="uid://bwe4abvexsali" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/frog/jump/frog-jump-2.png" id="6_jaxcj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eo7sl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fr4jv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1uxa4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6ugrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pq7nm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iu73a")
+}],
+"loop": true,
+"name": &"iddle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_cu2v7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jaxcj")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[node name="octo" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eo7sl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fr4jv")
+animation = &"Atack"

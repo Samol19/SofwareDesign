@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5iigvwigjset"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_7twl5"]
+[ext_resource type="Texture2D" uid="uid://cgudqyrdct0pt" path="res://Assets/PNG/playerShip3_green.png" id="1_o4g02"]
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(-8, -4)
+collision_mask = 2
+script = ExtResource("1_7twl5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(8, -3)
+polygon = PackedVector2Array(-33, 15, -8, -16, -3, -27, 3, -27, 7, -17, 34, 15, 34, 20, 15, 20, 9, 27, -10, 26, -16, 21, -36, 20)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, -4)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_o4g02")
+
+[node name="LaserSpawn" type="Marker2D" parent="."]
+position = Vector2(8, -31)

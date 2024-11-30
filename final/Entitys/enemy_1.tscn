@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://bo3e8q3yqvof"]
+
+[ext_resource type="Script" path="res://Entitys/enemy_1.gd" id="1_exj1c"]
+[ext_resource type="Texture2D" uid="uid://euw7kg0qpvhy" path="res://assets/amarillo.png" id="2_qj17x"]
+[ext_resource type="Texture2D" uid="uid://b5v3c0yk83yjp" path="res://assets/player.png" id="3_tv73u"]
+[ext_resource type="Texture2D" uid="uid://bfynan43loqoq" path="res://assets/rojo.png" id="4_0bydi"]
+[ext_resource type="Texture2D" uid="uid://dkxj1pflibk2r" path="res://assets/verde.png" id="5_p1w28"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b8l48"]
+radius = 25.0
+height = 86.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17cgq"]
+radius = 31.0
+height = 94.0
+
+[node name="enemy1" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_exj1c")
+skins = Array[Texture2D]([ExtResource("2_qj17x"), ExtResource("3_tv73u"), ExtResource("4_0bydi"), ExtResource("5_p1w28")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_tv73u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_b8l48")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_17cgq")

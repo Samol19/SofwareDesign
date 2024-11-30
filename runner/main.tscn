@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds1bnricoprd4"]
+
+[sub_resource type="GDScript" id="GDScript_u5c5s"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	get_tree().quit()
+"
+
+[node name="Main" type="Node2D"]
+
+[node name="Play" type="Button" parent="."]
+offset_left = 317.0
+offset_top = 72.0
+offset_right = 795.0
+offset_bottom = 302.0
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 314.0
+offset_top = 329.0
+offset_right = 790.0
+offset_bottom = 556.0
+tooltip_text = "Exit Game"
+text = "Quit"
+script = SubResource("GDScript_u5c5s")
